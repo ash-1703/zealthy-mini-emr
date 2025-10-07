@@ -88,6 +88,12 @@ export default async function AdminPatient({
     ? patient.appointments.find((a) => String(a.id) === String(editApptId))
     : undefined;
 
+  function toLocalForDatetimeLocal(dateLike: string | Date) {
+  const d = new Date(dateLike);
+  const pad = (n: number) => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+
   return (
     <main className="min-h-screen bg-neutral-50">
       {/* Navbar */}
@@ -484,13 +490,7 @@ export default async function AdminPatient({
                     <option value="YEARLY">Yearly</option>
                   </select>
                 </div>
-                <div>
-                  <label className="block text-sm font-medium">Every</label>
-                  <input name="repeatInterval" type="number" min={1} defaultValue={1} className="input mt-1" />
-                  <p className="mt-1 text-xs text-neutral-500">
-                    e.g. “Every 2 weeks” → Repeats: Weekly, Every: 2
-                  </p>
-                </div>
+              
 
                 <div className="md:col-span-2">
                   <label className="block text-sm font-medium">Ends (optional)</label>
@@ -525,7 +525,7 @@ export default async function AdminPatient({
                   <input
                     name="startDateTime"
                     type="datetime-local"
-                    defaultValue={new Date(apptToEdit.startDateTime).toISOString().slice(0, 16)}
+                    defaultValue={toLocalForDatetimeLocal(apptToEdit.startDateTime)}
                     className="input mt-1"
                   />
                 </div>
@@ -550,13 +550,7 @@ export default async function AdminPatient({
                           <option value="YEARLY">Yearly</option>
                         </select>
                       </div>
-                      <div>
-                        <label className="block text-sm font-medium">Every</label>
-                        <input name="repeatInterval" type="number" min={1} defaultValue={matchInterval} className="input mt-1" />
-                        <p className="mt-1 text-xs text-neutral-500">
-                          e.g. “Every 2 weeks” → Repeats: Weekly, Every: 2
-                        </p>
-                      </div>
+                    
 
                       <div className="md:col-span-2">
                         <label className="block text-sm font-medium">Ends (optional)</label>
