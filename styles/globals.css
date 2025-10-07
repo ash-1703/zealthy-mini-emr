@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body { @apply bg-white text-gray-900; }
+a { @apply text-blue-600 hover:underline; }
+.card { @apply border rounded-2xl p-4 shadow-sm; }
+.btn { @apply border rounded-2xl px-3 py-2; }
+.input { @apply border p-2 rounded w-full; }
+.table th, .table td { @apply p-2; }

@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* your utility classes */
+body { @apply bg-white text-gray-900; }
+a { @apply text-blue-600 hover:underline; }
+.card { @apply border rounded-2xl p-4 shadow-sm; }
+.btn { @apply border rounded-2xl px-3 py-2; }
+.input { @apply border p-2 rounded w-full; }
+.table th, .table td { @apply p-2; }
+
+
+/* === Zealthy brand tokens === */
+:root{
+  /* Evergreen brand */
+  --brand-700:#0B6B3A;  /* hover / headings */
+  --brand-600:#0E7A45;  /* primary */
+  --brand-500:#159054;  /* active */
+  --brand-100:#DDEFE6;  /* light background tint */
+  --brand-050:#F2F8F5;  /* page background tint */
+
+  /* Neutrals */
+  --ink-900:#0F2B21;    /* titles */
+  --ink-700:#264338;    /* body strong */
+  --ink-500:#51685E;    /* body */
+  --line:#E5E7EB;       /* borders */
+
+  /* Status */
+  --success:#2DCA73;
+  --danger:#DC2626;
+}
+
+/* Page background and base text */
+body { @apply bg-white text-[var(--ink-700)]; background: var(--brand-050); }
+
+/* Cards */
+.card { @apply rounded-2xl shadow; background: #fff; border: 1px solid var(--line); }
+
+/* Inputs */
+.input { @apply w-full rounded-xl border px-3 py-2 outline-none transition;
+  border-color: var(--line); background: #fff; }
+.input:focus { @apply ring-2; ring-color: var(--brand-100); border-color: var(--brand-600); }
+
+/* Buttons */
+.btn { @apply inline-flex items-center justify-center rounded-xl px-4 py-2 font-medium transition; }
+.btn-brand { color:#fff; background: var(--brand-600); }
+.btn-brand:hover { background: var(--brand-700); }
+.btn-success { color:#fff; background: var(--success); }
+.btn-success:hover { filter: brightness(0.95); }
+.btn-ghost { @apply text-[color:var(--brand-600)]; }
+.btn-danger { color:#fff; background: var(--danger); }
+.btn-danger:hover { filter: brightness(0.95); }
+
+/* Badges */
+.badge { @apply inline-flex items-center rounded-full px-2.5 py-1 text-xs font-semibold; }
+.badge-brand { background: var(--brand-100); color: var(--brand-600); }
+.badge-success { background: #E7F7EF; color: var(--success); }
+
+/* Links & headings */
+a { color: var(--brand-600); }
+a:hover { color: var(--brand-700); }
+.h1 { @apply text-3xl font-bold; color: var(--ink-900); }
+.h2 { @apply text-xl font-semibold; color: var(--ink-900); }
+.subtle { @apply text-sm; color: var(--ink-500); }
+
+/* Tables */
+.table th { @apply text-sm font-medium; color: var(--ink-900); background: var(--brand-100); }
+.table tr:hover { background: #F7FAF9; }
+
+/* Smooth anchor scroll */
+html { scroll-behavior: smooth; }
+
+/* Collapsible panel using :target */
+.collapsible {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height .35s ease, opacity .2s ease, transform .25s ease;
+  /* optional: remove spacing when closed */
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  border-width: 0 !important;
+}
+.collapsible:target {
+  max-height: 1200px; /* big enough for the form */
+  opacity: 1;
+  transform: translateY(0);
+  /* restore card padding/border when open */
+  padding: 1.5rem !important;        /* p-6 */
+  border-width: 1px !important;
+  margin-top: 2rem !important;
+}
+/* Destructive button: outline by default, fills on hover */
+.btn-danger {
+  color: #DC2626; background: transparent; border: 1px solid #F2D6D6;
+}
+.btn-danger:hover { color: #fff; background: #DC2626; border-color: #DC2626; }
+
+/* hide native details/summary marker for elements using .no-marker */
+.no-marker::-webkit-details-marker { display: none; }
+.no-marker::marker { color: transparent; font-size: 0; }
+/* fallback if ::marker isn't supported */
+.no-marker { -webkit-appearance: none; }
+
+.table th, .table td { @apply p-2; border-bottom: 1px solid var(--line); }
+/* make header divider a bit more prominent but still light */
+.table thead th { border-bottom: 1px solid rgba(16,24,32,0.06); }
+/* subtle row hover background (keeps existing hover color but softer) */
+.table tbody tr:hover { background-color: rgba(16,24,32,0.02); }
+
+.stretched-link {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: block;
+  /* keep link accessible but visually hidden */
+  color: inherit;
+  text-decoration: none;
+}
