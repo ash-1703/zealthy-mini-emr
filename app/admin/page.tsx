@@ -95,7 +95,7 @@ export default async function Admin({
           </div>
           <Link
             href={mkQS({ m: "new" })}
-            className="rounded-lg bpx-3.5 py-2 text-sm font-semibold text-white "
+            className="rounded-lg bpx-3.5 py-2 text-sm font-semibold text-emerald-700 "
           >
             + New Patient
           </Link>
